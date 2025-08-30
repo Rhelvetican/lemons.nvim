@@ -44,16 +44,16 @@ local highlights = {
     CursorColumn = { bg = c.darker_grey },
     CursorLine = { bg = c.darker_grey },
     Directory = { fg = c.orange },
-    DiffAdd = { bg = c.dark_green },
-    DiffChange = { bg = c.dark_blue },
-    DiffDelete = { bg = c.dark_red, fg = c.light_red, bold = true },
-    DiffText = { bg = c.dark_cyan },
+    DiffAdd = { bg = c.dark_green, fg = c.green },
+    DiffChange = { bg = c.dark_blue, fg = c.blue },
+    DiffDelete = { bg = c.dark_red, fg = c.red },
+    DiffText = { bg = c.dark_cyan, fg = c.cyan },
     NonText = { fg = c.light_grey },
     TermCursor = { fg = c.black, bg = c.yellow },
     ErrorMsg = { link = "DiagnosticError" },
     WarningMsg = { link = "DiagnosticWarn" },
     WinSeparator = { fg = c.dark_grey },
-    Folded = { bg = c.dark_blue, fg = c.blue },
+    Folded = { bg = c.dark_cyan, fg = c.cyan },
     SignColumn = { fg = c.light_grey },
     LineNr = { fg = c.light_grey },
     CursorLineNr = { fg = c.yellow, bold = true },
@@ -82,6 +82,9 @@ local highlights = {
     SpellRare = { undercurl = true, sp = c.cyan },
     StatusLine = { bg = c.darker_grey, fg = c.white },
     StatusLineNC = { bg = c.dark_grey, fg = c.dark_white },
+    Tabline = { bg = c.dark_grey, fg = c.darker_white },
+    TablineFill = { bg = c.dark_grey },
+    TablineSel = { bg = c.black, fg = c.white, bold = true },
     Visual = { bg = c.dark_grey, bold = true },
     WinBar = { link = "StatusLine" },
     WinBarNC = { link = "StatusLineNC" },
@@ -262,7 +265,7 @@ function M.load()
     vim.g.terminal_color_0 = c.black
     vim.g.terminal_color_1 = c.red
     vim.g.terminal_color_2 = c.green
-    vim.g.terminal_color_3 = c.orange
+    vim.g.terminal_color_3 = c.yellow
     vim.g.terminal_color_4 = c.blue
     vim.g.terminal_color_5 = c.pink
     vim.g.terminal_color_6 = c.cyan
@@ -270,7 +273,7 @@ function M.load()
     vim.g.terminal_color_8 = c.light_grey
     vim.g.terminal_color_9 = c.light_red
     vim.g.terminal_color_10 = c.lime
-    vim.g.terminal_color_11 = c.yellow
+    vim.g.terminal_color_11 = c.orange
     vim.g.terminal_color_12 = c.light_blue
     vim.g.terminal_color_13 = c.pink
     vim.g.terminal_color_14 = c.light_cyan
