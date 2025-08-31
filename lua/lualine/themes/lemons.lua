@@ -1,16 +1,16 @@
-local c = require("kky").colors
+local c = require("lemons").colors
 
 return {
     normal = {
         a = { fg = c.black, bg = c.yellow, gui = "bold" },
-        b = { bg = c.dark_grey, fg = c.white },
+        b = { bg = c.grey, fg = c.white },
         c = "StatusLine",
     },
     insert = {
         a = { fg = c.black, bg = c.green, gui = "bold" },
     },
     visual = {
-        a = { fg = c.black, bg = c.purple, gui = "bold" },
+        a = { fg = c.black, bg = c.pink, gui = "bold" },
     },
     replace = {
         a = { fg = c.black, bg = c.red, gui = "bold" },

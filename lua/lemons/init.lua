@@ -7,26 +7,21 @@ local editing = false
 -- stylua: ignore
 M.colors = {
     black        = "#040404",
-    darker_grey  = "#151515",
-    dark_grey    = "#202020",
-    grey         = "#3b3b3b",
+    dark_grey    = "#161616",
+    grey         = "#212121",
     light_grey   = "#565656",
     darker_white = "#808080",
     dark_white   = "#cacaca",
     white        = "#F5F5F5",
-    dark_red     = "#1B0C0F",
     red          = "#e33a5b",
-    light_red    = "#FF446F",
     dark_green   = "#0B1B10",
     lime         = "#2ed592",
     green        = "#2ED563",
     dark_yellow  = "#1D190D",
     orange       = "#fa8a49",
     yellow       = "#F0BE42",
-    dark_blue    = "#0D1018",
-    blue         = "#486ac0",
-    light_blue   = "#647af6",
-    pink         = "#e74c8d",
+    blue         = "#4e70c6",
+    pink         = "#e84a85",
     dark_cyan    = "#0C1918",
     cyan         = "#37C3B5",
     light_cyan   = "#6AD8ED",
@@ -37,22 +32,22 @@ local c = M.colors
 ---@type table<string, vim.api.keyset.highlight>
 local highlights = {
     Normal = { fg = c.white, bg = c.black },
-    ColorColumn = { bg = c.darker_grey },
+    ColorColumn = { bg = c.dark_grey },
     Conceal = { fg = c.darker_white },
     CurSearch = { bg = c.yellow, fg = c.black },
     Cursor = { bg = c.white, fg = c.black },
-    CursorColumn = { bg = c.darker_grey },
-    CursorLine = { bg = c.darker_grey },
+    CursorColumn = { bg = c.dark_grey },
+    CursorLine = { bg = c.dark_grey },
     Directory = { fg = c.orange },
     DiffAdd = { bg = c.dark_green, fg = c.green },
-    DiffChange = { bg = c.dark_blue, fg = c.blue },
-    DiffDelete = { bg = c.dark_red, fg = c.red },
+    DiffChange = { bg = c.grey },
+    DiffDelete = { bg = c.grey, fg = c.red },
     DiffText = { bg = c.dark_cyan, fg = c.cyan },
     NonText = { fg = c.light_grey },
     TermCursor = { fg = c.black, bg = c.yellow },
     ErrorMsg = { link = "DiagnosticError" },
     WarningMsg = { link = "DiagnosticWarn" },
-    WinSeparator = { fg = c.dark_grey },
+    WinSeparator = { fg = c.grey },
     Folded = { bg = c.dark_cyan, fg = c.cyan },
     SignColumn = { fg = c.light_grey },
     LineNr = { fg = c.light_grey },
@@ -64,10 +59,10 @@ local highlights = {
     NormalFloat = { link = "Normal" },
     FloatBorder = { fg = c.light_grey },
     Title = { fg = c.yellow, bold = true },
-    Pmenu = { bg = c.darker_grey, fg = c.white },
+    Pmenu = { bg = c.dark_grey, fg = c.white },
     PmenuSel = { fg = c.black, bg = c.yellow },
     PmenuExtra = { fg = c.darker_white },
-    PmenuSbar = { bg = c.dark_grey },
+    PmenuSbar = { bg = c.grey },
     PmenuThumb = { bg = c.dark_white },
     PmenuMatch = { underline = true },
     PmenuMatchSel = { underline = true, sp = c.black },
@@ -80,12 +75,12 @@ local highlights = {
     SpellCap = { undercurl = true, sp = c.yellow },
     SpellLocal = { undercurl = true, sp = c.green },
     SpellRare = { undercurl = true, sp = c.cyan },
-    StatusLine = { bg = c.darker_grey, fg = c.white },
-    StatusLineNC = { bg = c.dark_grey, fg = c.dark_white },
-    Tabline = { bg = c.dark_grey, fg = c.darker_white },
-    TablineFill = { bg = c.dark_grey },
+    StatusLine = { bg = c.dark_grey, fg = c.white },
+    StatusLineNC = { bg = c.grey, fg = c.dark_white },
+    Tabline = { bg = c.grey, fg = c.darker_white },
+    TablineFill = { bg = c.grey },
     TablineSel = { bg = c.black, fg = c.white, bold = true },
-    Visual = { bg = c.dark_grey, bold = true },
+    Visual = { bg = c.grey, bold = true },
     WinBar = { link = "StatusLine" },
     WinBarNC = { link = "StatusLineNC" },
 
@@ -113,17 +108,17 @@ local highlights = {
     Error = { fg = c.black, bg = c.red },
     Added = { fg = c.green },
     Removed = { fg = c.red },
-    Changed = { fg = c.light_blue },
+    Changed = { fg = c.blue },
 
     -- Diagnostics
     DiagnosticError = { fg = c.red, bold = true },
     DiagnosticWarn = { fg = c.yellow, bold = true },
-    DiagnosticInfo = { fg = c.light_blue, bold = true },
+    DiagnosticInfo = { fg = c.blue, bold = true },
     DiagnosticHint = { fg = c.cyan, bold = true },
     DiagnosticOk = { fg = c.green, bold = true },
     DiagnosticVirtualTextError = { fg = c.red, bold = true },
     DiagnosticVirtualTextWarn = { fg = c.yellow, bold = true },
-    DiagnosticVirtualTextInfo = { fg = c.light_blue, bold = true },
+    DiagnosticVirtualTextInfo = { fg = c.blue, bold = true },
     DiagnosticVirtualTextHint = { fg = c.cyan, bold = true },
     DiagnosticVirtualTextOk = { fg = c.green, bold = true },
     DiagnosticUnderlineError = { underline = true, sp = c.red },
@@ -135,18 +130,18 @@ local highlights = {
     DiagnosticUnused = { link = "Comment" },
     DiagnosticSignError = { fg = c.red, bold = true },
     DiagnosticSignWarn = { fg = c.yellow, bold = true },
-    DiagnosticSignInfo = { fg = c.light_blue, bold = true },
+    DiagnosticSignInfo = { fg = c.blue, bold = true },
     DiagnosticSignHint = { fg = c.cyan, bold = true },
     DiagnosticSignOk = { fg = c.green, bold = true },
 
     -- LSP
     LspCodeLens = { fg = c.light_grey },
     LspCodeLensSeparator = { fg = c.light_grey },
-    LspInlayHint = { bg = c.darker_grey, fg = c.light_grey },
-    LspReferenceText = { bg = c.dark_grey },
+    LspInlayHint = { bg = c.dark_grey, fg = c.light_grey },
+    LspReferenceText = { bg = c.grey },
     LspReferenceRead = { link = "LspReferenceText" },
     LspReferenceWrite = { link = "LspReferenceText" },
-    LspSignatureActiveParameter = { bg = c.dark_grey, bold = true },
+    LspSignatureActiveParameter = { bg = c.grey, bold = true },
 
     -- Treesitter
     ["@variable"] = { fg = c.white },
@@ -156,12 +151,12 @@ local highlights = {
     ["@markup.heading.2"] = { fg = c.orange, bold = true },
     ["@markup.heading.3"] = { fg = c.red, bold = true },
     ["@markup.heading.4"] = { fg = c.pink },
-    ["@markup.heading.5"] = { fg = c.light_blue },
+    ["@markup.heading.5"] = { fg = c.blue },
     ["@markup.heading.6"] = { fg = c.green },
     ["@markup.link"] = { underline = false },
     ["@markup.link.vimdoc"] = { underline = true },
     ["@markup.link.label"] = { underline = true },
-    ["@markup.link.url"] = { fg = c.light_blue, underline = true },
+    ["@markup.link.url"] = { fg = c.blue, underline = true },
     ["@markup.strikethrough"] = { strikethrough = true, fg = c.dark_white },
     ["@markup.quote"] = { fg = c.dark_white },
     ["@keyword.directive"] = { link = "PreProc" },
@@ -177,15 +172,16 @@ local highlights = {
     BlinkCmpMenu = { link = "NormalFloat" },
     BlinkCmpMenuBorder = { link = "FloatBorder" },
     BlinkCmpLabelMatch = { link = "PmenuMatch" },
+    BlinkCmpDocBorder = { link = "FloatBorder" },
     BlinkCmpKind = { link = "NormalFloat" },
     BlinkCmpKindFolder = { fg = c.orange },
     BlinkCmpKindFile = { fg = c.white },
     BlinkCmpKindText = { fg = c.dark_white },
     BlinkCmpKindMethod = { fg = c.yellow },
     BlinkCmpKindFunction = { fg = c.yellow },
-    BlinkCmpKindField = { fg = c.light_blue },
+    BlinkCmpKindField = { fg = c.blue },
     BlinkCmpKindVariable = { fg = c.white },
-    BlinkCmpKindProperty = { fg = c.white },
+    BlinkCmpKindProperty = { fg = c.light_cyan },
     BlinkCmpKindClass = { fg = c.lime },
     BlinkCmpKindStruct = { fg = c.lime },
     BlinkCmpKindEnum = { fg = c.lime },
@@ -193,9 +189,9 @@ local highlights = {
     BlinkCmpKindModule = { fg = c.cyan },
     BlinkCmpKindPackage = { fg = c.orange },
     BlinkCmpKindNameSpace = { fg = c.cyan },
-    BlinkCmpKindObject = { fg = c.light_blue },
+    BlinkCmpKindObject = { fg = c.blue },
     BlinkCmpKindValue = { fg = c.pink },
-    BlinkCmpKindNumber = { fg = c.pink },
+    BlinkCmpKindNumber = { fg = c.orange },
     BlinkCmpKindConstant = { fg = c.pink },
     BlinkCmpKindEnumMember = { fg = c.pink },
     BlinkCmpKindNull = { fg = c.white },
@@ -218,7 +214,7 @@ local highlights = {
     LeapBackdrop = { fg = c.darker_white },
 
     -- mini.icons
-    MiniIconsAzure = { fg = c.light_blue },
+    MiniIconsAzure = { fg = c.light_cyan },
     MiniIconsBlue = { fg = c.blue },
     MiniIconsCyan = { fg = c.cyan },
     MiniIconsGreen = { fg = c.green },
@@ -229,19 +225,19 @@ local highlights = {
     MiniIconsYellow = { fg = c.yellow },
 
     -- treesitter-context
-    TreesitterContextBottom = { underline = true, sp = c.grey },
+    TreesitterContextBottom = { underline = true, sp = c.light_grey },
     TreesitterContextLineNumber = { fg = c.darker_white },
 
     -- vim-illuminate
-    IlluminatedWordText = { bg = c.dark_grey },
-    IlluminatedWordRead = { link = "IlluminatedWordText" },
-    IlluminatedWordWrite = { link = "IlluminatedWordText" },
+    IlluminatedWordText = { link = "LspReferenceText" },
+    IlluminatedWordRead = { link = "LspReferenceRead" },
+    IlluminatedWordWrite = { link = "LspReferenceWrite" },
 
     -- oil.nvim
     OilHidden = { fg = c.darker_white },
     OilLink = { fg = c.cyan },
     OilCreate = { fg = c.green },
-    OilMove = { fg = c.light_blue },
+    OilMove = { fg = c.blue },
     OilCopy = { fg = c.cyan },
     OilChange = { fg = c.yellow },
     OilRestore = { fg = c.green },
@@ -256,7 +252,7 @@ function M.load()
 
     vim.o.termguicolors = true
     vim.o.background = "dark"
-    vim.g.colors_name = "kky"
+    vim.g.colors_name = "lemons"
 
     for name, val in pairs(highlights) do
         vim.api.nvim_set_hl(0, name, val)
@@ -271,10 +267,10 @@ function M.load()
     vim.g.terminal_color_6 = c.cyan
     vim.g.terminal_color_7 = c.dark_white
     vim.g.terminal_color_8 = c.light_grey
-    vim.g.terminal_color_9 = c.light_red
+    vim.g.terminal_color_9 = c.red
     vim.g.terminal_color_10 = c.lime
     vim.g.terminal_color_11 = c.orange
-    vim.g.terminal_color_12 = c.light_blue
+    vim.g.terminal_color_12 = c.blue
     vim.g.terminal_color_13 = c.pink
     vim.g.terminal_color_14 = c.light_cyan
     vim.g.terminal_color_15 = c.white
