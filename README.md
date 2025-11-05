@@ -1,8 +1,7 @@
 # Lemons.nvim 🍋
 My favorite colorscheme for Neovim.
 > Dark mode only
-
-![preview](./images/preview.png)
+<img alt="preview" src="https://github.com/user-attachments/assets/c6f48c00-65a8-4271-a2cb-9f4112e5a98f" />
 
 ## Setup
 Just install with any package manager.
