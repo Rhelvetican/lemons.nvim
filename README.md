@@ -10,7 +10,7 @@ Just install with any package manager.
 ```lua
 {
   "Kaikacy/Lemons.nvim",
-  lazy = true,
+  lazy = false,
   priority = 1000,
   config = function()
     vim.cmd.colorscheme("lemons")
