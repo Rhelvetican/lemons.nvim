@@ -23,7 +23,7 @@ Just install with any package manager.
 ```
 > Configuration options are not provided and I probably won't add any 😐
 
-## 🎨 Color
+## 🎨 Colors
 To access color palette use `require("lemons.colors")` which is a table of colors.
 ### Here are all of the colors:
 | Name         | Value   |
