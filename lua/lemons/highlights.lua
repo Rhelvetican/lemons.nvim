@@ -109,7 +109,7 @@ local function get_highlights(c)
         -- LSP
         LspCodeLens = { fg = c.light_gray },
         LspCodeLensSeparator = { fg = c.light_gray },
-        LspInlayHint = { bg = c.dark_gray, fg = c.light_gray },
+        LspInlayHint = { fg = c.light_gray },
         LspReferenceText = { bg = c.gray },
         LspReferenceRead = { link = "LspReferenceText" },
         LspReferenceWrite = { link = "LspReferenceText" },
