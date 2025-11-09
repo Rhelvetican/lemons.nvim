@@ -16,7 +16,7 @@ ansi = [
     "#5088ed",
     "#f45ab4",
     "#37c3b5",
-    "#f0f0f0",
+    "#cacaca",
 ]
 brights = [
     "#161616",
@@ -26,5 +26,5 @@ brights = [
     "#5088ed",
     "#f45ab4",
     "#6ad8ed",
-    "#cacaca",
+    "#f0f0f0",
 ]
