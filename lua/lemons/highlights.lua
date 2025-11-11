@@ -1,8 +1,9 @@
--- these functions are required for :Lazy reload to work
+local M = {}
 
 ---@param c lemons.Colors
-local function get_highlights(c)
-    return {
+---@param opts lemons.Configuration
+function M.get(c, opts)
+    local default = {
         Normal = { fg = c.white, bg = c.black },
         NormalFloat = { link = "Normal" },
         FloatBorder = { bg = c.black, fg = c.light_gray },
@@ -236,38 +237,12 @@ local function get_highlights(c)
         LuaLineDiffDelete = { link = "Removed" },
         LuaLineDiffChange = { link = "Changed" },
     }
-end
 
----@param c lemons.Colors
-local function set_terminal_colors(c)
-    vim.g.terminal_color_0 = c.black
-    vim.g.terminal_color_1 = c.red
-    vim.g.terminal_color_2 = c.green
-    vim.g.terminal_color_3 = c.yellow
-    vim.g.terminal_color_4 = c.blue
-    vim.g.terminal_color_5 = c.pink
-    vim.g.terminal_color_6 = c.cyan
-    vim.g.terminal_color_7 = c.dark_white
-    vim.g.terminal_color_8 = c.light_gray
-    vim.g.terminal_color_9 = c.red
-    vim.g.terminal_color_10 = c.lime
-    vim.g.terminal_color_11 = c.orange
-    vim.g.terminal_color_12 = c.blue
-    vim.g.terminal_color_13 = c.pink
-    vim.g.terminal_color_14 = c.light_cyan
-    vim.g.terminal_color_15 = c.white
-end
-
-local M = {}
-
----@param colors lemons.Colors
-function M.set(colors)
-    local highlights = get_highlights(colors)
-
-    for name, val in pairs(highlights) do
-        vim.api.nvim_set_hl(0, name, val)
+    for key, highlight in pairs(opts.highlights_overrides or {}) do
+        default[key] = highlight
     end
-    set_terminal_colors(colors)
+
+    return default
 end
 
 return M
